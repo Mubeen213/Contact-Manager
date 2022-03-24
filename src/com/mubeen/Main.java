@@ -1,6 +1,9 @@
 package com.mubeen;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
+import java.util.Scanner;
 
 /*
     * Welcome to the contact application
@@ -9,20 +12,20 @@ import java.text.ParseException;
  */
 public class Main {
 
+
     public static void main(String[] args)  {
 	// write your code here
         try{
-            Contact contact = new Contact("Mubeen","09/21/2000","7097088");
-            Contact contact1 = new Contact(contact);
-            contact.setBirthDate("01/01/2000");
-            contact1.setAge(13);
+            Contact contact = new Contact("Mubeen","832108911","21/09/2000");
+
+            contact.setAge(123);
+            contact.setBirthDate("1/1/2000");
             System.out.println(contact);
-            System.out.println(contact1);
         }catch (ParseException e){
             System.out.println(e.getMessage());
-        }finally {
-            System.out.println("process complete");
         }
 
     }
+
+
 }
