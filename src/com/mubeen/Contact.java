@@ -1,7 +1,6 @@
 package com.mubeen;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -12,10 +11,20 @@ public class Contact {
     private String phoneNumber;
 
     Contact(String name, String birthDate, String phoneNumber) throws ParseException {
+        if(name ==null || name.isBlank()){
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+        if(phoneNumber == null || phoneNumber.isBlank()){
+            throw new IllegalArgumentException("Phone Number cannot be empty");
+        }
+        if(phoneNumber.length()<5){
+            throw new IllegalArgumentException("Phone Number cannot be less than 5");
+        }
+
         this.name = name;
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
-       this.age = toAge(birthDate);
+        this.age = toAge(birthDate);
     }
 
     public Contact(Contact contact){
@@ -42,7 +51,20 @@ public class Contact {
     }
 
     public void setName(String name) {
+        if(name==null || name.isBlank()){
+            throw new IllegalArgumentException("Name cannot be blank");
+        }
         this.name = name;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        if(phoneNumber==null || phoneNumber.isBlank()){
+            throw new IllegalArgumentException("Phone Number cannot be blank");
+        }
+        if(phoneNumber.length()<5){
+            throw new IllegalArgumentException("Phone Number cannot be less than 5");
+        }
+        this.phoneNumber = phoneNumber;
     }
 
     public void setAge(int age) {
