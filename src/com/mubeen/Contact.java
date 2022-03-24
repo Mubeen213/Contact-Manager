@@ -13,6 +13,15 @@ public class Contact {
     private int age;
 
     Contact(String name, String phoneNumber, String birthDate) throws ParseException {
+        if(name==null||name.isBlank()){
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+        if(phoneNumber==null||phoneNumber.isBlank()){
+            throw new IllegalArgumentException("Phone Number cannot be empty");
+        }
+        if(phoneNumber.length()<5){
+            throw new IllegalStateException("Phone Number cannot be less than 6");
+        }
         this.name = name;
         this.phoneNumber=phoneNumber;
         this.birthDate = birthDate;
@@ -25,6 +34,9 @@ public class Contact {
         this.age = contact.age;
     }
     public void setName(String name) {
+        if(name.isBlank()||name==null){
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
         this.name = name;
     }
 
@@ -38,6 +50,9 @@ public class Contact {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        if(phoneNumber.length()<6){
+            throw new IllegalStateException("Phone Number cannot be less than 6");
+        }
         this.phoneNumber = phoneNumber;
     }
 
