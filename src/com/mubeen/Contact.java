@@ -18,7 +18,12 @@ public class Contact {
         this.birthDate = birthDate;
         this.age = toAge(birthDate);
     }
-
+    public Contact(Contact contact){
+        this.name  = contact.name;
+        this.phoneNumber = contact.phoneNumber;
+        this.birthDate = contact.birthDate;
+        this.age = contact.age;
+    }
     public void setName(String name) {
         this.name = name;
     }

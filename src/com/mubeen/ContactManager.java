@@ -1,21 +1,42 @@
-
 package com.mubeen;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class ContactManager {
-     ArrayList<Contact> contacts;
+    private ArrayList<Contact> contacts;
 
-    public ContactManager() {
+    ContactManager(){
         this.contacts = new ArrayList<Contact>();
     }
 
-    public Contact getContact(int index) throws ParseException {
+    public void setContact(Contact contact, int index){
+        this.contacts.add(index, new Contact(contact));
+    }
+
+    public Contact getContact(int index){
         return new Contact(contacts.get(index));
     }
 
-    public void setContact(Contact contact, int index) throws ParseException {
-        contacts.set(index, new Contact(contact));
+    public void addContact(Contact contact){
+        contacts.add(new Contact(contact));
+    }
+
+    public boolean deleteContact(String name){
+        for (int i = 0; i < contacts.size(); i++) {
+            if(this.contacts.get(i).getName()==name){
+                this.contacts.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    public String toString(){
+
+        String temp = "";
+        for (int i = 0; i < contacts.size(); i++) {
+            temp += contacts.get(i).toString();
+            temp+="\n";
+        }
+        return temp;
     }
 }
