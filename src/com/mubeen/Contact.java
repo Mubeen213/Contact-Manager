@@ -18,6 +18,42 @@ public class Contact {
        this.age = toAge(birthDate);
     }
 
+    public Contact(Contact contact){
+        this.name = contact.name;
+        this.phoneNumber = contact.phoneNumber;
+        this.birthDate = contact.birthDate;
+        this.age = contact.age;
+    }
+
+    public int getAge(){
+        return this.age;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getBirthDate() {
+        return this.birthDate;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBirthDate(String birthDate) throws ParseException {
+        this.birthDate = birthDate;
+        setAge(toAge(birthDate));
+    }
+
     public int toAge(String birthDate) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         formatter.setLenient(false);
@@ -25,7 +61,12 @@ public class Contact {
         return (int)(TimeUnit.MILLISECONDS.toDays(diff)/365);
     }
 
-    public int getAge(){
-        return this.age;
+    public String toString(){
+
+        return "Name: " + this.name +".\n"
+                +"Phone Number: " + this.phoneNumber + ".\n"
+                +"DateOfBirth: " + this.birthDate + ".\n"
+                +"Age: " + this.age + ".\n";
     }
+
 }

@@ -13,7 +13,11 @@ public class Main {
 	// write your code here
         try{
             Contact contact = new Contact("Mubeen","09/21/2000","7097088");
-            System.out.println(contact.getAge());
+            Contact contact1 = new Contact(contact);
+            contact.setBirthDate("01/01/2000");
+            contact1.setAge(13);
+            System.out.println(contact);
+            System.out.println(contact1);
         }catch (ParseException e){
             System.out.println(e.getMessage());
         }finally {
